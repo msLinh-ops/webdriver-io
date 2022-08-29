@@ -15,4 +15,6 @@ config.capabilities = [
 
 config.cucumberOpts.tagExpression = '@androidBrowser'; // pass tag to run tests specific to android
 
+config.cucumberOpts.require = ['./features/step-definitions/app.login.steps.ts'];
+
 exports.config = config;

@@ -1,3 +1,5 @@
+const { generate } = require('multiple-cucumber-html-reporter');
+const cucumberJson = require('wdio-cucumberjs-json-reporter');
 exports.config = {
     //
     // ====================
@@ -21,7 +23,7 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        './features/**/*.feature'
+        './features/**/web.*.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -132,7 +134,14 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    reporters: [
+        [
+            'cucumberjs-json', {
+                jsonFolder: './reports/json',
+                language: 'en',
+            }
+        ]
+    ],
 
 
     //
@@ -272,8 +281,10 @@ exports.config = {
      * @param {number}                 result.duration  duration of scenario in milliseconds
      * @param {Object}                 context          Cucumber World object
      */
-    // afterScenario: function (world, result, context) {
-    // },
+//     afterScenario: function (world, result, context) {
+//         cucumberJson.attach('just a string');
+// cucumberJson.attach('just a second string', 'text/plain');
+//     },
     /**
      *
      * Runs after a Cucumber Feature.
@@ -317,6 +328,13 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
+     onComplete: function(exitCode, config, capabilities, results) {
+        generate({
+            jsonDir: './reports/json',
+            reportPath: './reports/html',
+            openReportInBrowser: true
+        });
+    },
     // onComplete: function(exitCode, config, capabilities, results) {
     // },
     /**
