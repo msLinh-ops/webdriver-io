@@ -1,0 +1,21 @@
+{
+    "REQUEST": {
+       "baseUrl":"https://gorest.co.in/",
+        "endpoint": "/public/v2/users",
+        "query": {"id" : "5440"},
+        "totalNumber": "10",
+        "eToken":"c4b18e34b2c0026e4d85569bb4b751b6c5c5212634f37ba5b67840cb14c2e4ec",
+        "payload": {
+            "name":"QATEST", 
+            "gender":"male",
+             "email":"qatest@yobmail.com", 
+             "status":"active"
+        },
+        "updatedInfor" :{
+            "name":"Dron Bandopadhyay",
+            "email":"dron_bandopadhyay@conn-cormier.com",
+            "gender":"optional",
+            "status":"active"
+        }
+    }
+}
