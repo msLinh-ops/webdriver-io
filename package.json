@@ -3,12 +3,12 @@
     "version": "1.0.0",
     "description": "Automation test for browsers and native app with Cucumber",
     "main": "index.js",
-    "type": "module",
+    "type": "commonjs",
     "module": "commonjs",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "wdio": "wdio run wdio.conf.js",
-        "wdio_test": "wdio run ./qa_wdio.conf.cjs",
+        "wdio_test": "wdio run qa_wdio.conf.js",
         "android": "wdio ./config/native-app/android/android.config.js",
         "androidBrowser": "wdio ./config/native-app/android/androidBrowser.config.js"
     },

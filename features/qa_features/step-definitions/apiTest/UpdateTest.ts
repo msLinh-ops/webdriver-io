@@ -1,15 +1,13 @@
 import { When, Then } from "@wdio/cucumber-framework";
-import apiHelpers from "../../Helpers/apiHelpers.js";
-import constants from "../../dataTest/constants.json" assert { type: "json" };
+import apiHelpers from "../../Helpers/apiHelpers";
+import { REQUEST } from "../../dataTest/constants.json" assert { type: "json" };
 
 
 let response
-let dataLoader = constants.REQUEST
-
 
 When(/^User calls API to update an existing User$/, async () => {
     await browser.call(async function () {
-        response = apiHelpers.PATCH(dataLoader.baseUrl, dataLoader.endpoint, dataLoader.query, dataLoader.eToken, dataLoader.updatedInfor)
+        response = apiHelpers.PATCH(REQUEST.baseUrl, REQUEST.endpoint, REQUEST.query, REQUEST.eToken, REQUEST.updatedInfor)
     })
 });
 
@@ -19,7 +17,7 @@ Then(/^Response must return status code is 201$/, async () => {
 
 When(/^User calls API to view updated User$/, async () => {
     await browser.call(async function () {
-        response = apiHelpers.GET(dataLoader.baseUrl, dataLoader.endpoint, '', dataLoader.query.id)
+        response = apiHelpers.GET(REQUEST.baseUrl, REQUEST.endpoint, '', REQUEST.query.id)
 
     })
 
@@ -30,7 +28,7 @@ Then(/^Response must return status code is 200$/, async () => {
 });
 
 Then(/^Updated information is dispalyed$/, async () => {
-    expect(response.gender) == dataLoader.updatedInfor.gender
+    expect(response.gender) == REQUEST.updatedInfor.gender
 });
 
 

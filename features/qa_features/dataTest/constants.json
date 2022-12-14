@@ -1,6 +1,6 @@
 {
     "REQUEST": {
-       "baseUrl":"https://gorest.co.in/",
+       "baseUrl":"gorest.co.in",
         "endpoint": "/public/v2/users",
         "query": {"id" : "5440"},
         "totalNumber": "10",
